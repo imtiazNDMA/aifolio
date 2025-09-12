@@ -1,0 +1,2 @@
+mainColor = #0F2464
+secondayColor  = #7DD858
