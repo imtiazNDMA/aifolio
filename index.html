@@ -1,96 +1,333 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Portfolio</title>
-        <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-
-        <header class="header">
-            <a ahref="#" class="logo">Ahoy!</a>
-
-            <nav class="navbar">
-                <a href="#" class="active" id="" style="--i:1;">Home</a>
-                <a href="#" class="" id="" style="--i:2;">About</a>
-                <a href="#" class="" id="" style="--i:3;">Skills</a>
-                <a href="#" class="" id="" style="--i:4;">Projects</a>
-                <a href="#" class="" id="" style="--i:5;">Contact</a>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imtiaz Nabi | AI Engineer & Architect</title>
+    <meta name="description" content="Senior AI Engineer specializing in LLMs, Agentic AI, RAG, and MLOps. Transform your business with state-of-the-art AI solutions.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#" class="logo gradient-text">IMTIAZ.AI</a>
+                <div class="nav-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About Me</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me Now</a>
+                </div>
             </nav>
+        </div>
+    </header>
 
-        </header>
-
-        <section class="home">
-            <div class="home-content">
-                <h3>Hello, It's Me</h3>
-                <h1>Imtiaz Nabi</h1>
-                <h3>And I'm <span class="multiple-text"></span></h3>
-                <p>helping businesses and innovators turn complex technology into practical solutions. With deep expertise in AI, satellite navigation, and software development, I design intelligent systems and share insights that make cutting-edge tech accessible, actionable, and impactful.</p>
-                <div class="social-media">
-                    <a href="#" style="--i:7;"><i class="bx bxl-facebook"></i></a>
-                    <a href="#" style="--i:8;"><i class="bx bxl-instagram"></i></a>
-                    <a href="#" style="--i:9;"><i class="bx bxl-linkedin"></i></a>
-                    <a href="#" style="--i:10;"><i class="bx bxl-github"></i></a>
-                    <a href="#" style="--i:11;"><i class="bx bxl-twitter"></i></a>
-                </div>
-                <a href="#" class="btn">Download CV</a>
-            </div>
-
-            <div class="home-img">
-                <img src="images/imtiaz.png" alt="Imtiaz Nabi">
-            </div>
-        </section>
-
-        <section class="timeline">
-            <div class="timeline-row">
-                <div class="timeline-column">
-                    <h2 class="title">Work Experience</h2>
-
-                    <div class="timeline-box">
-                        <div class="timeline-content">
-                            <div class="content">
-                                <div class="year"><l class="bx bxs-calendar"></l> 2025 - Present</div>
-                                <h3>AI Engineer | National Disaster Management Authority</h3>
-                                <p>Leading AI initiatives to enhance disaster prediction, risk assessment, and resource allocation, contributing to improved public safety and resilience.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-box">
-                        <div class="timeline-content">
-                            <div class="content">
-                                <div class="year"><l class="bx bxs-calendar"></l> 2022 - 2024</div>
-                                <h3>GNSS Engineer | National Center of GIS and Space Applications</h3>
-                                <p>Collaborated with scientists and researchers to develop cutting-edge satellite navigation software defined receivers, signal processing algorithms, and data analysis tools for road, aerial, and maritime applications.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-box">
-                        <div class="timeline-content">
-                            <div class="content">
-                                <div class="year"><l class="bx bxs-calendar"></l> 2017 - Present</div>
-                                <h3>AI Engineer | Freelance, Upwork/Fiverr</h3>
-                                <p>Developing AI solutions for various industries, including healthcare, finance, and transportation, ecommerce, and more, leveraging machine learning and deep learning techniques.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div id="hero-canvas-container">
+            <canvas id="hero-canvas"></canvas>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h4 class="hero-tagline">AGENTIC AI • RAG • LLMs</h4>
+                <h1>Engineering Production-Grade <span class="gradient-text">Agentic Intelligence</span></h1>
+                <p>Deploying autonomous systems that solve complex business logic. Senior AI Engineer specializing in scalable RAG architectures and high-performance neural systems.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Contact Me Now <i class="bx bx-right-arrow-alt"></i></a>
+                    <a href="#projects" class="btn btn-outline">Explore Innovations</a>
                 </div>
             </div>
-        </section>
+            <div class="hero-visual">
+                <!-- Potential for a profile image or a more complex AI visualization -->
+                <div class="profile-card glass">
+                    <img src="images/imtiaz.png" alt="Imtiaz Nabi" class="profile-img">
+                    <div class="status">
+                        <span class="dot pulse"></span>
+                        <span>Available for Projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        
-        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-        <script src="scripts.js"></script>
-    </body>
+    <!-- About Me Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h4 class="hero-tagline">MY STORY</h4>
+                    <h2>The Intersection of <span class="gradient-text">Logic & Impact</span></h2>
+                    <p>With a background as an **AI Engineer at the National Disaster Management Authority**, I’ve spent my career building systems where failure isn’t an option. From designing **GNSS (Global Navigation Satellite Systems)** software to orchestrating **multi-agent RAG pipelines**, I focus on precision engineering.</p>
+                    <p>My mission is to transform cutting-edge AI research into production-ready solutions that drive measurable business growth and solve real-world crises.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item glass">
+                        <h3>8+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item glass">
+                        <h3>50+</h3>
+                        <p>AI Projects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical <span class="gradient-text">Ecosystem</span></h2>
+                <p>A production-ready stack spanning from low-level neural architectures to high-performance full-stack applications.</p>
+            </div>
+
+            <div class="tech-ecosystem-cloud">
+                <!-- AI & Modeling -->
+                <div class="domain-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <h3 class="skill-category"><i class="bx bx-brain"></i> Agentic & Modeling</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">LangGraph</span>
+                        <span class="tech-tag">DSPy</span>
+                        <span class="tech-tag">CrewAI</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">Unsloth</span>
+                        <span class="tech-tag">HuggingFace</span>
+                        <span class="tech-tag">Einops</span>
+                        <span class="tech-tag">PEFT/LoRA</span>
+                    </div>
+                </div>
+
+                <!-- Inference & Search -->
+                <div class="domain-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <h3 class="skill-category"><i class="bx bx-server"></i> Inference & RAG</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">vLLM</span>
+                        <span class="tech-tag">NVIDIA Triton</span>
+                        <span class="tech-tag">Qdrant</span>
+                        <span class="tech-tag">Milvus</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">RankBM25</span>
+                        <span class="tech-tag">Hybrid Search</span>
+                        <span class="tech-tag">Ollama</span>
+                    </div>
+                </div>
+
+                <!-- Backend & APIs -->
+                <div class="domain-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <h3 class="skill-category"><i class="bx bx-cog"></i> Backend & APIs</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Pydantic v2</span>
+                        <span class="tech-tag">gRPC</span>
+                        <span class="tech-tag">WebSockets</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">GraphQL</span>
+                    </div>
+                </div>
+
+                <!-- Frontend & Interaction -->
+                <div class="domain-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <h3 class="skill-category"><i class="bx bx-layout"></i> Frontend & UX</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Next.js 15</span>
+                        <span class="tech-tag">TailwindCSS</span>
+                        <span class="tech-tag">Vercel AI SDK</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Framer Motion</span>
+                        <span class="tech-tag">Shadcn UI</span>
+                        <span class="tech-tag">D3.js</span>
+                    </div>
+                </div>
+
+                <!-- Infrastructure & MLOps -->
+                <div class="domain-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <h3 class="skill-category"><i class="bx bx-cloud"></i> Infra & MLOps</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Terraform</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                        <span class="tech-tag">Modal</span>
+                        <span class="tech-tag">LangSmith</span>
+                        <span class="tech-tag">W&B</span>
+                    </div>
+                </div>
+
+                <!-- Data Engineering -->
+                <div class="domain-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <h3 class="skill-category"><i class="bx bx-data"></i> Data Engineering</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">Polars</span>
+                        <span class="tech-tag">Apache Spark</span>
+                        <span class="tech-tag">DVC</span>
+                        <span class="tech-tag">Apache Arrow</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">Databricks</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section (Bento Grid) -->
+    <section id="expertise" class="expertise">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical <span class="gradient-text">Expertise</span></h2>
+                <p>Specialized in building end-to-end AI systems from research to production.</p>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-item glass large">
+                    <div class="spotlight-overlay"></div>
+                    <i class="bx bx-bot"></i>
+                    <h3>Agentic AI</h3>
+                    <p>Building autonomous agents that can plan, reason, and execute complex workflows using frameworks like LangGraph and CrewAI.</p>
+                </div>
+                <div class="bento-item glass">
+                    <div class="spotlight-overlay"></div>
+                    <i class="bx bx-data"></i>
+                    <h3>Advanced RAG</h3>
+                    <p>Optimizing retrieval pipelines with semantic search, reranking, and hybrid search strategies.</p>
+                </div>
+                <div class="bento-item glass">
+                    <div class="spotlight-overlay"></div>
+                    <i class="bx bx-brain"></i>
+                    <h3>LLM fine-tuning</h3>
+                    <p>Customizing open-source models (Llama, Mistral) for domain-specific performance.</p>
+                </div>
+                <div class="bento-item glass medium">
+                    <div class="spotlight-overlay"></div>
+                    <i class="bx bx-rocket"></i>
+                    <h3>MLOps & Scaling</h3>
+                    <p>Productionizing models with high availability and monitoring for real-world reliability.</p>
+                </div>
+                <div class="bento-item glass">
+                    <div class="spotlight-overlay"></div>
+                    <i class="bx bx-layer"></i>
+                    <h3>Deep Learning</h3>
+                    <p>Neural network architecture design and training for computer vision and NLP.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recent <span class="gradient-text">Innovations</span></h2>
+                <p>Production-grade code and research implementations.</p>
+            </div>
+            <div class="project-grid">
+                <div class="project-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <div class="project-info">
+                        <h3>Agent Skills</h3>
+                        <p>Production-grade engineering skills for AI coding agents. Focuses on reproducibility and robustness in autonomous workflows.</p>
+                        <div class="tags">
+                            <span>TypeScript</span>
+                            <span>Agentic AI</span>
+                            <span>MCP</span>
+                        </div>
+                        <a href="https://github.com/imtiazNDMA/agent-skills" target="_blank" rel="noopener" class="project-link">Source <i class="bx bx-link-external"></i></a>
+                    </div>
+                </div>
+                <div class="project-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <div class="project-info">
+                        <h3>OpenCode</h3>
+                        <p>An open-source implementation of a coding agent capable of complex software engineering tasks and multi-file reasoning.</p>
+                        <div class="tags">
+                            <span>Node.js</span>
+                            <span>LLMs</span>
+                            <span>Automation</span>
+                        </div>
+                        <a href="https://github.com/imtiazNDMA/opencode" target="_blank" rel="noopener" class="project-link">Source <i class="bx bx-link-external"></i></a>
+                    </div>
+                </div>
+                <div class="project-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <div class="project-info">
+                        <h3>Qwen3-TTS</h3>
+                        <p>Streaming speech generation and expressiveness research based on the Qwen series of models.</p>
+                        <div class="tags">
+                            <span>Python</span>
+                            <span>Deep Learning</span>
+                            <span>Audio AI</span>
+                        </div>
+                        <a href="https://github.com/imtiazNDMA/Qwen3-TTS" target="_blank" rel="noopener" class="project-link">Source <i class="bx bx-link-external"></i></a>
+                    </div>
+                </div>
+                <div class="project-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <div class="project-info">
+                        <h3>SimExAI / Hazard Monitor</h3>
+                        <p>AI-driven disaster monitoring and early warning systems for national-scale resilience (NDMA context).</p>
+                        <div class="tags">
+                            <span>ML Ops</span>
+                            <span>PyTorch</span>
+                            <span>Prediction</span>
+                        </div>
+                        <a href="https://github.com/imtiazNDMA/SimExAI" target="_blank" rel="noopener" class="project-link">Source <i class="bx bx-link-external"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-card glass">
+                <h2>Ready to Start Your <span class="gradient-text">AI Journey?</span></h2>
+                <p>Schedule a strategy call or send a message to discuss your next breakthrough.</p>
+                <div class="contact-options">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="bx bx-envelope"></i>
+                            <span>imtiaz.ai@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="bx bxl-linkedin-square"></i>
+                            <span>linkedin.com/in/imtiazndma</span>
+                        </div>
+                    </div>
+                    <form id="contact-form" class="contact-form">
+                        <input type="text" placeholder="Name" required>
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Tell me about your project" rows="4" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Request <i class="bx bx-send"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Imtiaz Nabi. Built with ♥ and Intelligence.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
 </html>
