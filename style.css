@@ -188,6 +188,18 @@ nav {
     letter-spacing: -1px;
 }
 
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: var(--text);
+    transition: var(--transition-fast);
+}
+
+.menu-toggle:hover {
+    color: var(--primary);
+}
+
 .nav-links {
     display: flex;
     gap: 2.5rem;
@@ -715,7 +727,7 @@ nav {
 /* Projects */
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
     gap: 2rem;
 }
 
@@ -929,13 +941,41 @@ nav {
 
 /* Mobile Responsive */
 @media (max-width: 968px) {
-    .header .nav-links {
-        display: none; /* Add a burger menu logic if needed later */
+    section {
+        padding: 60px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        z-index: 2001;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: var(--mantle);
+        border-left: 1px solid var(--surface0);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: right 0.3s var(--ease-out);
+        z-index: 2000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-links.active {
+        right: 0;
     }
 
     .hero-content {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 2rem;
     }
     
     .hero-text h1 {
@@ -945,18 +985,10 @@ nav {
     .hero-btns {
         justify-content: center;
     }
-    
-    .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: auto;
-    }
-    
-    .bento-item.large {
-        grid-column: span 2;
-    }
-    
-    .contact-options {
+
+    .about-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
     }
 }
 
@@ -964,12 +996,14 @@ nav {
     .hero-text h1 {
         font-size: 2.5rem;
     }
-    
-    .bento-grid {
-        grid-template-columns: 1fr;
+
+    .hero-btns {
+        flex-direction: column;
     }
-    
-    .bento-item.large {
-        grid-column: span 1;
+
+    .profile-img {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
     }
 }
