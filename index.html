@@ -66,26 +66,47 @@
     <section id="about" class="about">
         <div class="container">
             <div class="about-grid">
-                <div class="about-content">
-                    <h2 class="about-title">WHY SHOULD YOU HIRE ME?</h2>
-                    <p>Most AI projects break after the demo. Mine don’t. I build systems that hold up in production, clean retrieval, controlled context, stable agents, and pipelines that don’t collapse under real usage.</p>
-                    <p>If you need someone who can take an idea, ship it, and make sure it actually works, that’s where I come in.</p>
-                    <div class="about-btns">
-                        <a href="#contact" class="btn btn-primary">Let's Collaborate</a>
+                <div class="about-terminal-window glass">
+                    <div class="terminal-header">
+                        <div class="window-controls">
+                            <span class="control-dot close"></span>
+                            <span class="control-dot minimize"></span>
+                            <span class="control-dot maximize"></span>
+                        </div>
+                        <div class="window-title">root@imtiaz: ~</div>
+                    </div>
+                    <div class="terminal-body">
+                        <h2 class="about-title">WHY SHOULD YOU HIRE ME?</h2>
+                        <div class="terminal-prompt-line">
+                            <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~#</span> <span class="command">cat /docs/value_proposition.txt</span>
+                        </div>
+                        <p class="terminal-output">Most AI projects break after the demo. Mine don’t. I build systems that hold up in production, clean retrieval, controlled context, stable agents, and pipelines that don’t collapse under real usage.</p>
+                        
+                        <div class="terminal-prompt-line mt-2">
+                            <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~#</span> <span class="command">./execute_hire.sh</span>
+                        </div>
+                        <p class="terminal-output">If you need someone who can take an idea, ship it, and make sure it actually works, that’s where I come in.</p>
+                        
+                        <div class="about-btns mt-3">
+                            <a href="#contact" class="btn btn-primary">Let's Collaborate</a>
+                        </div>
                     </div>
                 </div>
-                <div class="about-stats">
-                    <div class="stat-item glass">
-                        <h3>10+</h3>
-                        <p>Production Agents</p>
+                <div class="about-stats htop-panels">
+                    <div class="htop-panel glass">
+                        <div class="htop-label">PID 1: production_agents</div>
+                        <div class="htop-value">10+</div>
+                        <div class="htop-bar-bg"><div class="htop-bar-fill" style="width: 100%;"></div></div>
                     </div>
-                    <div class="stat-item glass">
-                        <h3>91%</h3>
-                        <p>RAG Accuracy</p>
+                    <div class="htop-panel glass">
+                        <div class="htop-label">PID 2: rag_accuracy_score</div>
+                        <div class="htop-value">91%</div>
+                        <div class="htop-bar-bg"><div class="htop-bar-fill" style="width: 91%;"></div></div>
                     </div>
-                    <div class="stat-item glass">
-                        <h3>500M+</h3>
-                        <p>Tokens Processed</p>
+                    <div class="htop-panel glass">
+                        <div class="htop-label">PID 3: tokens_processed_mb</div>
+                        <div class="htop-value">500M+</div>
+                        <div class="htop-bar-bg"><div class="htop-bar-fill ping-animation" style="width: 100%;"></div></div>
                     </div>
                 </div>
             </div>
@@ -102,7 +123,7 @@
                 <!-- LLM & Generative AI -->
                 <div class="domain-card glass">
                     <div class="spotlight-overlay"></div>
-                    <h3 class="skill-category"><i class="bx bx-brain"></i> Agentic AI & Generative </h3>
+                    <h3 class="skill-category"><i class="bx bx-brain"></i> Agentic AI & GenAI </h3>
                     <div class="tag-cloud">
                         <span class="tech-tag">LangGraph</span>
                         <span class="tech-tag">CrewAI</span>
@@ -123,20 +144,11 @@
                     <h3 class="skill-category"><i class="bx bx-search-alt"></i> Knowledge Retrieval (RAG)</h3>
                     <div class="tag-cloud">
                         <span class="tech-tag">Pinecone</span>
-                        <span class="tech-tag">Milvus</span>
                         <span class="tech-tag">ChromaDB</span>
                         <span class="tech-tag">Weaviate</span>
                         <span class="tech-tag">Semantic Ranker</span>
                         <span class="tech-tag">RankBM25</span>
                         <span class="tech-tag">Hybrid Search</span>
-                        <span class="tech-tag">Ollama</span>
-                        <span class="tech-tag">LM Studio</span>
-                        <span class="tech-tag">OpenAI</span>
-                        <span class="tech-tag">Anthropic</span>
-                        <span class="tech-tag">Google</span>
-                        <span class="tech-tag">Cohere</span>
-                        <span class="tech-tag">Mistral</span>
-                        <span class="tech-tag">HuggingFace</span>
                     </div>
                 </div>
 
@@ -153,6 +165,9 @@
                         <span class="tech-tag">Prometheus</span>
                         <span class="tech-tag">Grafana</span>
                         <span class="tech-tag">Trident</span>
+                        <span class="tech-tag">HuggingFace</span>
+                        <span class="tech-tag">Ollama</span>
+                        <span class="tech-tag">LM Studio</span>
                     </div>
                 </div>
 
@@ -189,14 +204,34 @@
                 <!-- Tooling -->
                 <div class="domain-card glass">
                     <div class="spotlight-overlay"></div>
-                    <h3 class="skill-category"><i class="bx bx-wrench"></i> Observation & DevTools</h3>
+                    <h3 class="skill-category"><i class="bx bx-wrench"></i> MLOps & Observability</h3>
                     <div class="tag-cloud">
                         <span class="tech-tag">Modal</span>
                         <span class="tech-tag">LangSmith</span>
-                        <span class="tech-tag">W&B</span>
                         <span class="tech-tag">Git</span>
                         <span class="tech-tag">GitHub</span>
                         <span class="tech-tag">GitLab</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Prometheus</span>
+                        <span class="tech-tag">Grafana</span>
+                        <span class="tech-tag">ML Flow</span>
+                        <span class="tech-tag">Weights & Biases</span>
+                    </div>
+                </div>
+
+                <!-- API  -->
+                <div class="domain-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <h3 class="skill-category"><i class="bx bx-brain"></i> API Integration</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">OpenAI</span>
+                        <span class="tech-tag">Google</span>
+                        <span class="tech-tag">Cohere</span>
+                        <span class="tech-tag">Mistral</span>
+                        <span class="tech-tag">HuggingFace</span>
+                        <span class="tech-tag">Ollama</span>
+                        <span class="tech-tag">LM Studio</span>
                     </div>
                 </div>
 
@@ -307,7 +342,15 @@
                 <h2>Ready to Start Your <span class="gradient-text">AI Journey?</span></h2>
                 <p>Schedule a strategy call or send a message to discuss your next breakthrough.</p>
             </div>
-            <div class="contact-card glass">
+            <div class="about-terminal-window glass">
+                <div class="terminal-header">
+                    <div class="window-controls">
+                        <span class="control-dot close"></span>
+                        <span class="control-dot minimize"></span>
+                        <span class="control-dot maximize"></span>
+                    </div>
+                    <div class="window-title">root@contact: ~</div>
+                </div>
                 <div class="contact-console">
                     <!-- Left Pane: System Info & Socials -->
                     <div class="system-pane">
@@ -321,17 +364,6 @@
                                 <div class="diag-item"><span>UPTIME:</span> 99.9%</div>
                                 <div class="diag-item"><span>LOCATION:</span> REMOTE</div>
                                 <div class="diag-item"><span>CORES:</span> AGENTIC_AI</div>
-                            </div>
-                        </div>
-
-                        <div class="contact-info-list">
-                            <div class="info-item">
-                                <i class="bx bx-envelope"></i>
-                                <span>imtiaz.ai@example.com</span>
-                            </div>
-                            <div class="info-item">
-                                <i class="bx bxl-linkedin-square"></i>
-                                <span>linkedin.com/in/imtiazndma</span>
                             </div>
                         </div>
 

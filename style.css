@@ -343,7 +343,7 @@ nav {
     100% { box-shadow: 0 0 0 0 rgba(166, 227, 161, 0); }
 }
 
-/* About Me Section */
+/* About Me Section - Linux Terminal */
 .about-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
@@ -351,32 +351,136 @@ nav {
     align-items: center;
 }
 
-.about-content p {
-    margin-bottom: 1.5rem;
-    color: var(--subtext1);
-    font-size: 1.1rem;
+.about-terminal-window {
+    background: var(--mantle);
+    border: 1px solid var(--surface0);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    animation: floatWindow 6s ease-in-out infinite;
 }
 
-.about-stats {
+@keyframes floatWindow {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.terminal-header {
+    background: var(--crust);
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--surface0);
+    position: relative;
+}
+
+.window-controls {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+}
+
+.control-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.control-dot.close { background: var(--red); }
+.control-dot.minimize { background: var(--yellow); }
+.control-dot.maximize { background: var(--green); }
+
+.window-title {
+    flex: 1;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--overlay1);
+    font-weight: 500;
+}
+
+.terminal-body {
+    padding: 2rem;
+    background: var(--mantle);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.terminal-prompt-line {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.terminal-prompt-line .prompt .user { color: var(--red); font-weight: bold; }
+.terminal-prompt-line .prompt .host { color: var(--blue); font-weight: bold; }
+.terminal-prompt-line .command { color: var(--text); }
+
+.terminal-output {
+    color: var(--subtext1);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--surface0);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.mt-2 { margin-top: 1.5rem; }
+.mt-3 { margin-top: 2rem; }
+
+/* About Stats - Htop Style */
+.htop-panels {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.stat-item {
-    padding: 2rem;
-    text-align: center;
+.htop-panel {
+    background: var(--mantle);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--surface0);
+    font-family: 'JetBrains Mono', monospace;
 }
 
-.stat-item h3 {
-    font-size: 3rem;
-    color: var(--primary);
+.htop-label {
+    color: var(--teal);
+    font-size: 0.85rem;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-.stat-item p {
-    color: var(--subtext1);
-    font-weight: 600;
+.htop-value {
+    font-size: 2.5rem;
+    color: var(--text);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.htop-bar-bg {
+    height: 6px;
+    background: var(--surface0);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.htop-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), var(--teal));
+    border-radius: 3px;
+}
+
+.ping-animation {
+    animation: htopPing 3s infinite ease-in-out;
+}
+
+@keyframes htopPing {
+    0% { opacity: 0.7; width: 95%; }
+    50% { opacity: 1; width: 100%; }
+    100% { opacity: 0.7; width: 95%; }
 }
 
 /* Skills Section */
@@ -657,9 +761,6 @@ nav {
     display: grid;
     grid-template-columns: 350px 1fr;
     background: var(--mantle);
-    border: 1px solid var(--surface0);
-    border-radius: 12px;
-    overflow: hidden;
     min-height: 500px;
     text-align: left;
 }
