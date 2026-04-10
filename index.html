@@ -6,6 +6,8 @@
     <title>Imtiaz Nabi | Senior AI Engineer</title>
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Typed.js for typing effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <!-- Google Fonts -->
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
@@ -29,7 +31,11 @@
                     <a href="#hero">Home</a>
                     <a href="#about">About Me</a>
                     <a href="#projects">Projects</a>
+                    <a href="#certifications">Certifications</a>
                     <a href="#contact">Contact Me</a>
+                    <a href="resume/Imtiaz_Nabi_AI_ML_Engineer latest.pdf.pdf" class="nav-resume-btn" download>
+                        <i class="bx bx-download"></i> Resume
+                    </a>
                 </div>
             </nav>
         </div>
@@ -44,11 +50,21 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h4 class="hero-tagline">AGENTIC AI • RAG • LLM SYSTEMS</h4>
-                    <h1>Hi There!<br>I'm <span class="gradient-text">Imtiaz Nabi</span></h1>
-                    <p>Full stack <b>AI Engineer</b> specializing in production-grade <b>Agentic Intelligence</b>, Advanced RAG architectures, <b>MLOps</b> solutions.</p>
+                    <h1>Hi, There!<br>I'm <span id="typed-text"></span></h1>
+                    <div class="hero-subtitle">
+                        <p>Full stack <b>AI Engineer</b> specializing in production-grade <b>Agentic Intelligence</b>, Advanced RAG architectures, <b>MLOps</b> solutions.</p>
+                    </div>
                     <div class="hero-btns">
                         <a href="#contact" class="btn btn-primary">Contact Me Now <i class="bx bx-right-arrow-alt"></i></a>
-                        <a href="#projects" class="btn btn-outline">Want to see my work?</a>
+                        <div class="hero-secondary">
+                            <a href="#projects" class="btn btn-outline">
+                                <i class="bx bx-code-alt"></i>
+                                <span>View My Work</span>
+                            </a>
+                            <a href="resume/Imtiaz_Nabi_AI_ML_Engineer latest.pdf.pdf" class="btn btn-icon" download title="Download Resume">
+                                <i class="bx bx-download"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -81,14 +97,14 @@
                     <div class="terminal-body">
                         <h2 class="about-title">WHY SHOULD YOU HIRE ME?</h2>
                         <div class="terminal-prompt-line">
-                            <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~#</span> <span class="command">cat /docs/value_proposition.txt</span>
+                            <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~#</span> <span class="command" id="typed-cmd-1"></span><span class="typed-cursor">|</span>
                         </div>
-                        <p class="terminal-output">Most AI projects break after the demo. Mine don’t. I build systems that hold up in production, clean retrieval, controlled context, stable agents, and pipelines that don’t collapse under real usage.</p>
+                        <p class="terminal-output">Most AI projects break after the demo. Mine don't. I build systems that hold up in production, clean retrieval, controlled context, stable agents, and pipelines that don't collapse under real usage.</p>
                         
                         <div class="terminal-prompt-line mt-2">
-                            <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~#</span> <span class="command">./execute_hire.sh</span>
+                            <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~#</span> <span class="command" id="typed-cmd-2"></span><span class="typed-cursor">|</span>
                         </div>
-                        <p class="terminal-output">If you need someone who can take an idea, ship it, and make sure it actually works, that’s where I come in.</p>
+                        <p class="terminal-output">If you need someone who can take an idea, ship it, and make sure it actually works, that's where I come in.</p>
                         
                         <div class="about-btns mt-3">
                             <a href="#contact" class="btn btn-primary">Let's Collaborate</a>
@@ -263,6 +279,21 @@
                     </div>
                 </div>
 
+                <!-- DB Engineering -->
+                <div class="domain-card glass">
+                    <div class="spotlight-overlay"></div>
+                    <h3 class="skill-category"><i class="bx bx-data"></i> Data Pipelines</h3>
+                    <div class="tag-cloud">
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">MariaDB</span>
+                        <span class="tech-tag">Supabase</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                </div>
+
                 <!-- Cloud Providers -->
                 <div class="domain-card glass">
                     <div class="spotlight-overlay"></div>
@@ -273,6 +304,268 @@
                         <span class="tech-tag">Azure</span>
                         <span class="tech-tag">CoreWeave</span>
                         <span class="tech-tag">Lambda Labs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Work <span class="gradient-text">Experience</span></h2>
+                <p>My professional journey in AI & Machine Learning</p>
+            </div>
+            <div class="exp-terminal-window glass">
+                <div class="terminal-header">
+                    <div class="window-controls">
+                        <span class="control-dot close"></span>
+                        <span class="control-dot minimize"></span>
+                        <span class="control-dot maximize"></span>
+                    </div>
+                    <div class="window-title">root@imtiaz:~/career</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-cmd">
+                        <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~/career$</span>
+                        <span class="cmd-text" id="typed-cmd-3"></span><span class="typed-cursor">|</span>
+                    </div>
+                    
+                    <div class="timeline">
+                        <!-- Current Role -->
+                        <div class="timeline-item current">
+                            <div class="timeline-dot pulse"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <span class="timeline-date">Jan 2025 – Present</span>
+                                    <span class="timeline-badge">Current</span>
+                                </div>
+                                <div class="timeline-role">
+                                    <p class="org-name">National Disaster Management Authority, Pakistan</p>
+                                    <h3><em>AI Engineer</em></h3>
+                                </div>
+                                <ul class="timeline-achievements">
+                                    <li>Developed real-time extreme weather alert system using open-source LLMs and Openmeteo API</li>
+                                    <li>Developed a dam and reservoir monitoring and forecasting system using satellite and historical data</li>
+                                    <li>Engineered hybrid FB-Prophet + LSTM forecasting pipeline (MSE ≈ 1.5) for Pakistan's major rivers</li>
+                                    <li>Built a multi-agent based simulation exercise system for disaster preparedness</li>
+                                </ul>
+                                <div class="timeline-tags">
+                                    <span class="exp-tag">Mistral LLM</span>
+                                    <span class="exp-tag">OpenWeather API</span>
+                                    <span class="exp-tag">FB-Prophet</span>
+                                    <span class="exp-tag">LSTM</span>
+                                    <span class="exp-tag">LangGraph</span>
+                                    <span class="exp-tag">LangChain</span>
+                                    <span class="exp-tag">CrewAI</span>
+                                    <span class="exp-tag">Ollama</span>
+                                    <span class="exp-tag">LM Studio</span>
+                                    <span class="exp-tag">FastAPI</span>
+                                    <span class="exp-tag">Python</span>
+                                    <span class="exp-tag">Git</span>
+                                    <span class="exp-tag">GitHub</span>
+                                    <span class="exp-tag">GitLab</span>
+                                    <span class="exp-tag">Docker</span>
+                                    <span class="exp-tag">Kubernetes</span>
+                                    <span class="exp-tag">AWS</span>
+                                    <span class="exp-tag">GCP</span>
+                                    <span class="exp-tag">Azure</span>
+                                    <span class="exp-tag">CoreWeave</span>
+                                    <span class="exp-tag">Lambda Labs</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Research Assistant -->
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <span class="timeline-date">May 2023 – Dec 2024</span>
+                                </div>
+                                <div class="timeline-role">
+                                    <p class="org-name">National Centre of GIS and Space Applications</p>
+                                    <h3><em>Research Assistant</em></h3>
+                                </div>
+                                <ul class="timeline-achievements">
+                                    <li>Led GNSS Lab team</li>
+                                    <li>Developed ML-based spoofing detection for commercial off-the-shelf GNSS receivers</li>
+                                    <li>Built deep learning system for ionospheric space weather monitoring</li>
+                                    <li>Achieved decimeter-level accuracy using low-cost GNSS reference station network</li>
+                                </ul>
+                                <div class="timeline-tags">
+                                    <span class="exp-tag">GNSS</span>
+                                    <span class="exp-tag">Pytorch</span>
+                                    <span class="exp-tag">Scikit-Learn</span>
+                                    <span class="exp-tag">Tensorflow</span>
+                                    <span class="exp-tag">Keras</span>
+                                    <span class="exp-tag">JAX</span>
+                                    <span class="exp-tag">NumPy</span>
+                                    <span class="exp-tag">Pandas</span>
+                                    <span class="exp-tag">Matplotlib</span>
+                                    <span class="exp-tag">Seaborn</span>
+                                    <span class="exp-tag">Scipy</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Freelance -->
+                        <div class="timeline-item freelance">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <span class="timeline-date">2017 – Present</span>
+                                    <span class="timeline-badge ongoing">Ongoing</span>
+                                </div>
+                                <div class="timeline-role">
+                                    <p class="org-name">Fiverr / Upwork / LinkedIn</p>
+                                    <h3><em>AI Engineer</em></h3>
+                                </div>
+                                <ul class="timeline-achievements">
+                                    <li>Delivered AI solutions for 10+ global clients: classification, forecasting, anomaly detection</li>
+                                    <li>Deployed CNN and ANN models with high performance</li>
+                                    <li>Improved NLP pipelines by 15% for enterprise clients</li>
+                                </ul>
+                                <div class="timeline-tags">
+                                    <span class="exp-tag">CNN</span>
+                                    <span class="exp-tag">Pytorch</span>
+                                    <span class="exp-tag">Scikit-Learn</span>
+                                    <span class="exp-tag">Tensorflow</span>
+                                    <span class="exp-tag">Keras</span>
+                                    <span class="exp-tag">JAX</span>
+                                    <span class="exp-tag">NumPy</span>
+                                    <span class="exp-tag">Pandas</span>
+                                    <span class="exp-tag">Matplotlib</span>
+                                    <span class="exp-tag">Seaborn</span>
+                                    <span class="exp-tag">Scipy</span>
+                                    <span class="exp-tag">Scikit-image</span>
+                                    <span class="exp-tag">MLFlow</span>
+                                    <span class="exp-tag">Weights & Biases</span>
+                                    <span class="exp-tag">CometML</span>
+                                    <span class="exp-tag">Neptune.ai</span>
+                                    <span class="exp-tag">Tensorboard</span>
+                                    <span class="exp-tag">Optuna</span>
+                                    <span class="exp-tag">Scikit-Optimize</span>
+                                    <span class="exp-tag">Hyperopt</span>
+                                    <span class="exp-tag">Ray Tune</span>
+                                    <span class="exp-tag">ChromaDB</span>
+                                    <span class="exp-tag">Weaviate</span>
+                                    <span class="exp-tag">Pinecone</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="terminal-footer">
+                        <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~/career$</span>
+                        <span class="cursor-blink">_</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <div class="section-header">
+                <h2><span class="gradient-text">Certifications</span></h2>
+            </div>
+            <div class="cert-terminal-window glass">
+                <div class="terminal-header">
+                    <div class="window-controls">
+                        <span class="control-dot close"></span>
+                        <span class="control-dot minimize"></span>
+                        <span class="control-dot maximize"></span>
+                    </div>
+                    <div class="window-title">root@imtiaz:~/certifications</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-cmd">
+                        <span class="prompt"><span class="user">root</span>@<span class="host">imtiaz</span>:~/certifications$</span>
+                        <span class="cmd-text" id="typed-cmd-4"></span><span class="typed-cursor">|</span>
+                    </div>
+                    <div class="cert-grid">
+                        <a href="certificates/Introduction to Deep Learning with PyTorch.pdf" target="_blank" class="cert-card">
+                            <div class="cert-iframe-wrapper">
+                                <iframe class="cert-iframe" data-src="certificates/Introduction to Deep Learning with PyTorch.pdf"></iframe>
+                            </div>
+                            <div class="cert-label">
+                                <i class="bx bxs-brain"></i>
+                                <span>Deep Learning with PyTorch</span>
+                            </div>
+                        </a>
+
+                        <a href="certificates/Supervised Learning with scikit-learn.pdf" target="_blank" class="cert-card">
+                            <div class="cert-iframe-wrapper">
+                                <iframe class="cert-iframe" data-src="certificates/Supervised Learning with scikit-learn.pdf"></iframe>
+                            </div>
+                            <div class="cert-label">
+                                <i class="bx bxs-component"></i>
+                                <span>Supervised Learning</span>
+                            </div>
+                        </a>
+
+                        <a href="certificates/Data Visualization with Matplotlib.pdf" target="_blank" class="cert-card">
+                            <div class="cert-iframe-wrapper">
+                                <iframe class="cert-iframe" data-src="certificates/Data Visualization with Matplotlib.pdf"></iframe>
+                            </div>
+                            <div class="cert-label">
+                                <i class="bx bxs-bar-chart-alt-2"></i>
+                                <span>Matplotlib</span>
+                            </div>
+                        </a>
+
+                        <a href="certificates/Data Visualization with Seaborn.pdf" target="_blank" class="cert-card">
+                            <div class="cert-iframe-wrapper">
+                                <iframe class="cert-iframe" data-src="certificates/Data Visualization with Seaborn.pdf"></iframe>
+                            </div>
+                            <div class="cert-label">
+                                <i class="bx bxs-chart"></i>
+                                <span>Seaborn</span>
+                            </div>
+                        </a>
+
+                        <a href="certificates/Time Series Analysis in Python.pdf" target="_blank" class="cert-card">
+                            <div class="cert-iframe-wrapper">
+                                <iframe class="cert-iframe" data-src="certificates/Time Series Analysis in Python.pdf"></iframe>
+                            </div>
+                            <div class="cert-label">
+                                <i class="bx bxs-time"></i>
+                                <span>Time Series Analysis</span>
+                            </div>
+                        </a>
+
+                        <a href="certificates/ARIMA Models in Python.pdf" target="_blank" class="cert-card">
+                            <div class="cert-iframe-wrapper">
+                                <iframe class="cert-iframe" data-src="certificates/ARIMA Models in Python.pdf"></iframe>
+                            </div>
+                            <div class="cert-label">
+                                <i class="bx bxs-calculator"></i>
+                                <span>ARIMA Models</span>
+                            </div>
+                        </a>
+
+                        <a href="certificates/Machine Learning for Time Series Data in Python.pdf" target="_blank" class="cert-card">
+                            <div class="cert-iframe-wrapper">
+                                <iframe class="cert-iframe" data-src="certificates/Machine Learning for Time Series Data in Python.pdf"></iframe>
+                            </div>
+                            <div class="cert-label">
+                                <i class="bx bxs-chip"></i>
+                                <span>ML for Time Series</span>
+                            </div>
+                        </a>
+
+                        <a href="certificates/Containerization and Virtualization Concepts.pdf" target="_blank" class="cert-card">
+                            <div class="cert-iframe-wrapper">
+                                <iframe class="cert-iframe" data-src="certificates/Containerization and Virtualization Concepts.pdf"></iframe>
+                            </div>
+                            <div class="cert-label">
+                                <i class="bx bxs-box"></i>
+                                <span>Containerization</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -381,24 +674,38 @@
                                 <a href="#" class="social-icon" title="Substack"><i class="bx bx-news"></i></a>
                             </div>
                         </div>
+
+                        <div class="schedule-call">
+                            <h4>Schedule a Call</h4>
+                            <p class="schedule-hint">Free 30-min strategy session</p>
+                            <a href="https://cal.com" target="_blank" rel="noopener" class="cal-com-link">
+                                <svg class="cal-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 4H18V2H16V4H8V2H6V4H5C3.89 4 3 4.9 3 6V20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V9H19V20ZM9 11H7V13H9V11ZM13 11H11V13H13V11ZM17 11H15V13H17V11ZM9 15H7V17H9V15ZM13 15H11V17H13V15ZM17 15H15V17H17V15Z"/>
+                                </svg>
+                                <span>Book on Cal.com</span>
+                                <i class="bx bx-external-link"></i>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Right Pane: Input Terminal -->
                     <div class="terminal-pane">
-                        <form class="contact-form" id="contact-form">
+                        <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                             <div class="terminal-line">
                                 <span class="prompt"><span class="user">guest</span>@<span class="host">ai-agent</span>:~$</span>
-                                <input type="text" id="name" placeholder="Enter Name..." required>
+                                <input type="text" name="name" placeholder="Enter Name..." required>
                             </div>
                             <div class="terminal-line">
                                 <span class="prompt"><span class="user">guest</span>@<span class="host">ai-agent</span>:~$</span>
-                                <input type="email" id="email" placeholder="Enter Email..." required>
+                                <input type="email" name="email" placeholder="Enter Email..." required>
                             </div>
                             <div class="terminal-line textarea-line">
                                 <span class="prompt"><span class="user">guest</span>@<span class="host">ai-agent</span>:~$</span>
-                                <textarea id="message" placeholder="Input Payload Message..." rows="6" required></textarea>
+                                <textarea name="message" placeholder="Input Payload Message..." rows="6" required></textarea>
                             </div>
+                            <input type="hidden" name="_subject" value="Portfolio Contact from aifolio">
                             <div class="terminal-action">
+                                <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001"></div>
                                 <button type="submit" class="btn btn-primary">
                                     Execute Transmission <i class="bx bx-terminal"></i>
                                 </button>
@@ -420,6 +727,7 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
     <script src="scripts.js"></script>
 </body>
 </html>

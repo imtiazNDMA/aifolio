@@ -8,6 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initAnimations();
     initSkills();
     initContactForm();
+    initCertIframe();
+    initTypedEffect();
+    initTimelineAnimation();
+    initTerminalTyping();
     
     // UI/UX Upgrades (New)
     initCustomCursor();
@@ -299,24 +303,140 @@ function init3DTilt() {
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = form.querySelector('button');
         if (!btn) return;
-        btn.innerHTML = 'Sending Intelligence... <i class="bx bx-loader-alt bx-spin"></i>';
-        btn.disabled = true;
 
-        setTimeout(() => {
-            btn.innerHTML = '[SUCCESS] Payload delivered to Imtiaz Nabi <i class="bx bx-check"></i>';
-            btn.style.background = '#a6e3a1';
+        const hCaptchaResponse = hcaptcha?.getResponse();
+        if (!hCaptchaResponse) {
+            btn.innerHTML = '[ERROR] Complete captcha verification <i class="bx bx-x"></i>';
+            btn.style.background = '#f38ba8';
             btn.style.color = '#1e1e2e';
-            form.reset();
             setTimeout(() => {
                 btn.innerHTML = 'Execute Transmission <i class="bx bx-terminal"></i>';
                 btn.style.background = '';
                 btn.style.color = '';
-                btn.disabled = false;
-            }, 4000);
-        }, 1800);
+            }, 3000);
+            return;
+        }
+
+        btn.innerHTML = 'Sending Intelligence... <i class="bx bx-loader-alt bx-spin"></i>';
+        btn.disabled = true;
+
+        try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                btn.innerHTML = '[SUCCESS] Payload delivered to Imtiaz Nabi <i class="bx bx-check"></i>';
+                btn.style.background = '#a6e3a1';
+                btn.style.color = '#1e1e2e';
+                form.reset();
+                hcaptcha?.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            btn.innerHTML = '[ERROR] Transmission failed, retry <i class="bx bx-refresh"></i>';
+            btn.style.background = '#f38ba8';
+            btn.style.color = '#1e1e2e';
+        }
+
+        setTimeout(() => {
+            btn.innerHTML = 'Execute Transmission <i class="bx bx-terminal"></i>';
+            btn.style.background = '';
+            btn.style.color = '';
+            btn.disabled = false;
+        }, 4000);
+    });
+}
+
+// Certificate iframe lazy loading
+function initCertIframe() {
+    const iframes = document.querySelectorAll('.cert-iframe');
+    
+    iframes.forEach(iframe => {
+        const src = iframe.getAttribute('data-src');
+        if (src) {
+            iframe.src = src;
+        }
+    });
+}
+
+// Typed.js Effect for Hero
+function initTypedEffect() {
+    const typedElement = document.getElementById('typed-text');
+    if (!typedElement) return;
+
+    const typed = new Typed('#typed-text', {
+        strings: [
+            "Imtiaz Nabi",
+            " an AI Engineer"
+        ],
+        typeSpeed: 80,
+        backSpeed: 50,
+        backDelay: 1500,
+        startDelay: 500,
+        loop: true,
+        showCursor: true,
+        cursorChar: '|',
+        contentType: 'html'
+    });
+}
+
+// Timeline Scroll Animation
+function initTimelineAnimation() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    if (!timelineItems.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, index * 150);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    timelineItems.forEach(item => {
+        observer.observe(item);
+    });
+}
+
+// Terminal Command Typing Effect using Typed.js
+function initTerminalTyping() {
+    // Terminal commands to type
+    const terminalCommands = [
+        { id: 'typed-cmd-1', text: 'cat /docs/value_proposition.txt', delay: 800 },
+        { id: 'typed-cmd-2', text: './execute_hire.sh', delay: 1800 },
+        { id: 'typed-cmd-3', text: 'git log --career --oneline', delay: 800 },
+        { id: 'typed-cmd-4', text: 'ls -la --certificates', delay: 800 }
+    ];
+
+    terminalCommands.forEach((cmd, index) => {
+        const element = document.getElementById(cmd.id);
+        if (!element) return;
+
+        setTimeout(() => {
+            new Typed(`#${cmd.id}`, {
+                strings: [cmd.text],
+                typeSpeed: 60,
+                backSpeed: 0,
+                startDelay: 0,
+                showCursor: false,
+                contentType: 'text'
+            });
+        }, cmd.delay);
     });
 }
