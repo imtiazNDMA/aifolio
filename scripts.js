@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollProgress();
     init3DTilt();
     initMobileMenu();
+    initLeadChat();
+    initAnalyticsTracking();
 });
 
 // Header Scroll Effect
@@ -27,6 +29,15 @@ function initHeader() {
     window.addEventListener('scroll', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
+}
+
+function trackEvent(eventName, payload = {}) {
+    if (window.dataLayer && Array.isArray(window.dataLayer)) {
+        window.dataLayer.push({ event: eventName, ...payload });
+    }
+    if (typeof window.plausible === 'function') {
+        window.plausible(eventName, { props: payload });
+    }
 }
 
 // Mobile Menu Toggle
@@ -319,11 +330,11 @@ function initContactForm() {
 
         const startedAt = Number(startedAtField?.value || Date.now());
         if ((Date.now() - startedAt) < 3000) {
-            btn.innerHTML = '[ERROR] Wait 3 seconds, then retry <i class="bx bx-time"></i>';
+                btn.innerHTML = '[ERROR] Wait 3 seconds, then retry <i class="bx bx-time"></i>';
             btn.style.background = '#f38ba8';
             btn.style.color = '#1e1e2e';
-            setTimeout(() => {
-                btn.innerHTML = 'Execute Transmission <i class="bx bx-terminal"></i>';
+                setTimeout(() => {
+                btn.innerHTML = 'Send Message <i class="bx bx-send"></i>';
                 btn.style.background = '';
                 btn.style.color = '';
             }, 3000);
@@ -344,7 +355,7 @@ function initContactForm() {
             });
 
             if (response.ok) {
-                btn.innerHTML = '[SUCCESS] Payload delivered to Imtiaz Nabi <i class="bx bx-check"></i>';
+                btn.innerHTML = '[SUCCESS] Message sent successfully <i class="bx bx-check"></i>';
                 btn.style.background = '#a6e3a1';
                 btn.style.color = '#1e1e2e';
                 form.reset();
@@ -361,11 +372,163 @@ function initContactForm() {
         }
 
         setTimeout(() => {
-            btn.innerHTML = 'Execute Transmission <i class="bx bx-terminal"></i>';
+            btn.innerHTML = 'Send Message <i class="bx bx-send"></i>';
             btn.style.background = '';
             btn.style.color = '';
             btn.disabled = false;
         }, 4000);
+    });
+}
+
+function initLeadChat() {
+    const toggleBtn = document.getElementById('lead-chat-toggle');
+    const closeBtn = document.getElementById('lead-chat-close');
+    const panel = document.getElementById('lead-chat-panel');
+    const messagesEl = document.getElementById('lead-chat-messages');
+    const chatForm = document.getElementById('lead-chat-form');
+    const chatInput = document.getElementById('lead-chat-input');
+    const quickButtons = document.querySelectorAll('.chat-quick-btn');
+    const leadForm = document.getElementById('lead-capture-form');
+
+    if (!toggleBtn || !closeBtn || !panel || !messagesEl || !chatForm || !chatInput || !leadForm) return;
+
+    let initialized = false;
+    let selectedIntent = '';
+    let openAt = Date.now();
+    const transcript = [];
+
+    const botReplies = {
+        rag: 'Great use case. I usually start with data quality checks, chunking strategy, hybrid retrieval, and evaluation harness setup.',
+        agent: 'Perfect. I can deliver a production-focused AI agent MVP in two weeks with tool orchestration and guardrails.',
+        optimization: 'Good call. I can audit your current stack for latency, hallucination patterns, and cost leaks with an actionable hardening plan.'
+    };
+
+    function addMessage(role, text) {
+        const message = document.createElement('div');
+        message.className = `lead-chat-message ${role}`;
+        message.textContent = text;
+        messagesEl.appendChild(message);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        transcript.push(`${role}: ${text}`);
+        if (transcript.length > 30) transcript.shift();
+    }
+
+    function openChat() {
+        panel.classList.add('open');
+        panel.setAttribute('aria-hidden', 'false');
+        openAt = Date.now();
+        if (!initialized) {
+            addMessage('bot', 'Hi, I can help scope your project and suggest the best next step. Share your use case and timeline.');
+            initialized = true;
+        }
+        chatInput.focus();
+    }
+
+    function closeChat() {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        if (panel.classList.contains('open')) {
+            closeChat();
+        } else {
+            openChat();
+            trackEvent('chat_open', { source: 'floating_button' });
+        }
+    });
+
+    closeBtn.addEventListener('click', closeChat);
+
+    quickButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const intent = btn.getAttribute('data-intent') || '';
+            selectedIntent = intent;
+            addMessage('user', btn.textContent || 'Project request');
+            addMessage('bot', botReplies[intent] || 'Thanks. Share your current challenge and target outcome.');
+            trackEvent('chat_quick_intent', { intent: selectedIntent || 'unknown' });
+        });
+    });
+
+    chatForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = chatInput.value.trim();
+        if (!text) return;
+
+        addMessage('user', text);
+        trackEvent('chat_message_sent', { length_bucket: text.length > 80 ? 'long' : 'short' });
+        const lower = text.toLowerCase();
+        if (lower.includes('budget')) {
+            addMessage('bot', 'I can propose phased options. Share your timeline and target business outcome in one line.');
+        } else if (lower.includes('timeline') || lower.includes('time')) {
+            addMessage('bot', 'For most builds: audit in 2-3 days, MVP in ~2 weeks, hardening in 1-2 weeks.');
+        } else if (lower.includes('@')) {
+            addMessage('bot', 'Thanks. I also captured your email context. Submit the short lead form below and I will follow up with a proposal.');
+        } else {
+            addMessage('bot', 'Got it. If this looks aligned, submit the mini form below and I will send a tailored proposal.');
+        }
+
+        chatInput.value = '';
+    });
+
+    leadForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('lead-name');
+        const email = document.getElementById('lead-email');
+        const company = document.getElementById('lead-company');
+        const submitBtn = leadForm.querySelector('button[type="submit"]');
+
+        if (!name || !email || !submitBtn) return;
+        if ((Date.now() - openAt) < 3000) {
+            addMessage('bot', 'Please wait 3 seconds and submit again.');
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending...';
+
+        try {
+            const formData = new FormData();
+            formData.append('name', name.value.trim());
+            formData.append('email', email.value.trim());
+            formData.append('company', company ? company.value.trim() : '');
+            formData.append('_subject', 'New Lead from Portfolio Chat Assistant');
+            formData.append('message', `Intent: ${selectedIntent || 'general'}\n\nTranscript:\n${transcript.join('\n')}`);
+
+            const response = await fetch('https://formspree.io/f/meevkvpj', {
+                method: 'POST',
+                body: formData,
+                headers: { Accept: 'application/json' }
+            });
+
+            if (!response.ok) throw new Error('Lead submit failed');
+
+            addMessage('bot', 'Done. Thanks for sharing details - I will follow up with next steps and a proposal path soon.');
+            leadForm.reset();
+            trackEvent('chat_lead_submit_success', { intent: selectedIntent || 'general' });
+        } catch (error) {
+            addMessage('bot', 'Submission failed. Please retry or use the contact form below.');
+            trackEvent('chat_lead_submit_failed', { intent: selectedIntent || 'general' });
+        }
+
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Get Proposal';
+    });
+}
+
+function initAnalyticsTracking() {
+    document.querySelectorAll('.btn-primary').forEach((button) => {
+        button.addEventListener('click', () => {
+            const text = (button.textContent || '').trim().toLowerCase().replace(/\s+/g, '_').slice(0, 40);
+            trackEvent('cta_click', { label: text || 'primary_button' });
+        });
+    });
+
+    document.querySelectorAll('.project-link').forEach((link) => {
+        link.addEventListener('click', () => {
+            const href = link.getAttribute('href') || '';
+            trackEvent('project_link_click', { destination: href.includes('github.com') ? 'github' : href });
+        });
     });
 }
 
@@ -375,6 +538,9 @@ function initCertIframe() {
     
     iframes.forEach(iframe => {
         const src = iframe.getAttribute('data-src');
+        if (!iframe.getAttribute('title')) {
+            iframe.setAttribute('title', 'Certification preview');
+        }
         if (src) {
             iframe.src = src;
         }
@@ -427,7 +593,6 @@ function initTimelineAnimation() {
 
 // Terminal Command Typing Effect using Typed.js
 function initTerminalTyping() {
-    // Terminal commands to type
     const terminalCommands = [
         { id: 'typed-cmd-1', text: 'cat /docs/value_proposition.txt', delay: 800 },
         { id: 'typed-cmd-2', text: './execute_hire.sh', delay: 1800 },
@@ -435,7 +600,7 @@ function initTerminalTyping() {
         { id: 'typed-cmd-4', text: 'ls -la --certificates', delay: 800 }
     ];
 
-    terminalCommands.forEach((cmd, index) => {
+    terminalCommands.forEach((cmd) => {
         const element = document.getElementById(cmd.id);
         if (!element) return;
 
