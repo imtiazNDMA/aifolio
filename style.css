@@ -792,12 +792,112 @@ nav {
     color: var(--primary);
 }
 
+.project-metric {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1.1rem;
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--teal);
+    border: 1px solid rgba(148, 226, 213, 0.35);
+    background: rgba(148, 226, 213, 0.08);
+    border-radius: 999px;
+    padding: 0.35rem 0.65rem;
+}
+
 .project-link {
     font-weight: 600;
     color: var(--secondary);
     display: flex;
     align-items: center;
     gap: 0.4rem;
+}
+
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+}
+
+.project-link-secondary {
+    color: var(--teal);
+}
+
+/* Hire Me Services Strip */
+.services-strip {
+    padding-top: 30px;
+}
+
+.services-strip-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.services-strip-header h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.services-strip-header p {
+    color: var(--subtext1);
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.services-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.service-strip-card {
+    padding: 1.5rem;
+    border: 1px solid rgba(203, 166, 247, 0.15);
+    min-height: 230px;
+}
+
+.service-strip-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--mauve);
+    font-size: 1.3rem;
+    background: rgba(203, 166, 247, 0.12);
+    border: 1px solid rgba(203, 166, 247, 0.25);
+}
+
+.service-strip-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+}
+
+.service-strip-card p {
+    color: var(--subtext1);
+    font-size: 0.95rem;
+}
+
+.service-strip-metric {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.3px;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--teal);
+    border: 1px solid rgba(148, 226, 213, 0.35);
+    background: rgba(148, 226, 213, 0.08);
+    border-radius: 999px;
+    padding: 0.35rem 0.7rem;
+}
+
+.services-strip-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.6rem;
 }
 
 /* Command Center Console (Contact) */
@@ -862,6 +962,15 @@ nav {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+}
+
+.hp-field {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .social-dashboard h4 {
@@ -1004,16 +1113,15 @@ nav {
     gap: 1.5rem;
 }
 
-.h-captcha {
-    transform: scale(0.9);
-    transform-origin: left;
-}
-
 .terminal-action .btn {
     align-self: flex-end;
 }
 
 @media (max-width: 900px) {
+    .services-strip-grid {
+        grid-template-columns: 1fr;
+    }
+
     .contact-console {
         grid-template-columns: 1fr;
     }
@@ -1363,6 +1471,10 @@ nav {
    ============================================ */
 .experience {
     padding: 100px 0;
+    position: relative;
+    background:
+        radial-gradient(900px 420px at 12% -10%, rgba(203, 166, 247, 0.08), transparent 70%),
+        radial-gradient(700px 320px at 95% 18%, rgba(137, 180, 250, 0.08), transparent 65%);
 }
 
 .exp-terminal-window {
@@ -1391,8 +1503,9 @@ nav {
     left: 6px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, var(--mauve), var(--blue), var(--surface2));
+    width: 3px;
+    background: linear-gradient(180deg, var(--mauve), var(--blue), rgba(88, 91, 112, 0.75));
+    box-shadow: 0 0 16px rgba(137, 180, 250, 0.25);
 }
 
 /* Timeline Item */
@@ -1443,17 +1556,17 @@ nav {
 
 /* Timeline Content Card */
 .timeline-content {
-    background: var(--surface0);
-    border: 1px solid var(--surface1);
-    border-radius: 12px;
+    background: linear-gradient(160deg, rgba(49, 50, 68, 0.95), rgba(36, 37, 51, 0.95));
+    border: 1px solid rgba(127, 132, 156, 0.45);
+    border-radius: 14px;
     padding: 1.5rem;
     transition: all 0.3s var(--ease-out);
 }
 
 .timeline-item:hover .timeline-content {
     border-color: var(--primary);
-    transform: translateX(8px);
-    box-shadow: 0 10px 30px rgba(203, 166, 247, 0.15);
+    transform: translateX(8px) translateY(-2px);
+    box-shadow: 0 14px 34px rgba(203, 166, 247, 0.18);
 }
 
 .timeline-item.current .timeline-content {
@@ -1492,7 +1605,31 @@ nav {
 
 /* Timeline Role */
 .timeline-role {
-    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.role-copy {
+    min-width: 0;
+}
+
+.company-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mauve);
+    background: rgba(203, 166, 247, 0.12);
+    border: 1px solid rgba(203, 166, 247, 0.35);
+    flex-shrink: 0;
+}
+
+.company-mark i {
+    font-size: 1rem;
 }
 
 .org-name {
@@ -1505,13 +1642,35 @@ nav {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 0.25rem;
+}
+
+.timeline-impact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+}
+
+.impact-chip {
+    font-size: 0.68rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--teal);
+    background: rgba(148, 226, 213, 0.08);
+    border: 1px solid rgba(148, 226, 213, 0.35);
+    border-radius: 999px;
+    padding: 0.3rem 0.62rem;
 }
 
 .timeline-role h3 em {
     font-style: italic;
 }
-    font-family: 'Outfit', sans-serif;
-    margin-bottom: 0.25rem;
+
+.timeline-outcome {
+    font-size: 0.82rem;
+    color: var(--subtext0);
+    line-height: 1.45;
 }
 
 .role-info h4 {
@@ -1541,9 +1700,21 @@ nav {
     color: var(--subtext1);
     line-height: 1.6;
     margin-bottom: 0.5rem;
-    padding-left: 1.2rem;
+    padding-left: 1.35rem;
     position: relative;
     font-family: 'Inter', sans-serif;
+}
+
+.timeline-achievements li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--mauve), var(--blue));
+    box-shadow: 0 0 8px rgba(137, 180, 250, 0.45);
 }
 
 .timeline-achievements li i {
@@ -1559,7 +1730,39 @@ nav {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.timeline-tags-extra {
+    margin-top: 0.7rem;
+}
+
+.timeline-tags-more {
+    border-top: 1px dashed var(--surface1);
+    padding-top: 0.7rem;
+}
+
+.timeline-tags-more summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.74rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--overlay1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timeline-tags-more summary::-webkit-details-marker {
+    display: none;
+}
+
+.timeline-tags-more summary::before {
+    content: '+ ';
+    color: var(--teal);
+}
+
+.timeline-tags-more[open] summary::before {
+    content: '- ';
 }
 
 .exp-tag {

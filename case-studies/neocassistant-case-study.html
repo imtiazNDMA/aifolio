@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study | neocAssistant</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .case-study-page { padding: 120px 0 80px; }
+        .case-study-card { max-width: 920px; margin: 0 auto; padding: 2rem; }
+        .case-study-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 1.5rem; }
+        .case-study-chip { font-size: 0.78rem; color: var(--teal); border: 1px solid rgba(148, 226, 213, 0.35); background: rgba(148, 226, 213, 0.08); border-radius: 999px; padding: 0.35rem 0.7rem; font-family: 'JetBrains Mono', monospace; }
+        .case-study-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+        .case-study-block { padding: 1rem; border: 1px solid var(--surface1); border-radius: 10px; background: rgba(49, 50, 68, 0.3); }
+        .case-study-block h2 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .case-study-block p, .case-study-block li { color: var(--subtext1); font-size: 0.95rem; }
+        .case-study-block ul { margin-left: 1.1rem; }
+        .case-study-actions { margin-top: 1.6rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        @media (max-width: 800px) { .case-study-grid { grid-template-columns: 1fr; } .case-study-page { padding-top: 100px; } }
+    </style>
+</head>
+<body>
+    <section class="case-study-page">
+        <div class="container">
+            <article class="case-study-card glass">
+                <h1>Case Study: neocAssistant</h1>
+                <p>Context-aware disaster management assistant designed to support emergency operations with retrieval-backed responses and practical operator workflows.</p>
+                <div class="case-study-meta">
+                    <span class="case-study-chip">FastAPI + React</span>
+                    <span class="case-study-chip">RAG + Local LLM</span>
+                    <span class="case-study-chip">Frontend + Backend Delivery</span>
+                </div>
+
+                <div class="case-study-grid">
+                    <section class="case-study-block">
+                        <h2>Problem</h2>
+                        <p>Emergency teams need rapid, context-aware answers from scattered guidance documents, but manual lookup slows incident response.</p>
+                    </section>
+                    <section class="case-study-block">
+                        <h2>Architecture</h2>
+                        <p>Two-service architecture with a React web client and FastAPI backend. Backend handles retrieval workflow, session context, and model orchestration.</p>
+                    </section>
+                    <section class="case-study-block">
+                        <h2>Constraints</h2>
+                        <ul>
+                            <li>Low-latency responses for field usage</li>
+                            <li>Support for local inference stack</li>
+                            <li>Simple operations via launcher scripts</li>
+                        </ul>
+                    </section>
+                    <section class="case-study-block">
+                        <h2>Metrics</h2>
+                        <ul>
+                            <li>2-service production-style split (frontend + backend)</li>
+                            <li>Dedicated health/docs endpoints for operational visibility</li>
+                            <li>RAG pipeline enabled for multi-document grounding</li>
+                        </ul>
+                    </section>
+                    <section class="case-study-block">
+                        <h2>Your Role</h2>
+                        <p>Owned system design and implementation end to end: backend APIs, retrieval workflow, frontend UX, local model setup flow, and integration testing.</p>
+                    </section>
+                </div>
+
+                <div class="case-study-actions">
+                    <a href="https://github.com/imtiazNDMA/neocAssistant" target="_blank" rel="noopener" class="btn btn-outline">View Repository</a>
+                    <a href="../index.html#contact" class="btn btn-primary">Discuss Similar Build</a>
+                </div>
+            </article>
+        </div>
+    </section>
+</body>
+</html>

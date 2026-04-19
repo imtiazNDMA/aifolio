@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study | EarlyWarningSystem</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .case-study-page { padding: 120px 0 80px; }
+        .case-study-card { max-width: 920px; margin: 0 auto; padding: 2rem; }
+        .case-study-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0 1.5rem; }
+        .case-study-chip { font-size: 0.78rem; color: var(--teal); border: 1px solid rgba(148, 226, 213, 0.35); background: rgba(148, 226, 213, 0.08); border-radius: 999px; padding: 0.35rem 0.7rem; font-family: 'JetBrains Mono', monospace; }
+        .case-study-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+        .case-study-block { padding: 1rem; border: 1px solid var(--surface1); border-radius: 10px; background: rgba(49, 50, 68, 0.3); }
+        .case-study-block h2 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .case-study-block p, .case-study-block li { color: var(--subtext1); font-size: 0.95rem; }
+        .case-study-block ul { margin-left: 1.1rem; }
+        .case-study-actions { margin-top: 1.6rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        @media (max-width: 800px) { .case-study-grid { grid-template-columns: 1fr; } .case-study-page { padding-top: 100px; } }
+    </style>
+</head>
+<body>
+    <section class="case-study-page">
+        <div class="container">
+            <article class="case-study-card glass">
+                <h1>Case Study: NEOC Early Warning System</h1>
+                <p>Geospatial weather analytics platform for automated risk alerts, combining data ingestion, local LLM inference, and district-level dashboarding.</p>
+                <div class="case-study-meta">
+                    <span class="case-study-chip">Flask + SQLite</span>
+                    <span class="case-study-chip">Ollama + LangChain</span>
+                    <span class="case-study-chip">Geo Dashboard</span>
+                </div>
+
+                <div class="case-study-grid">
+                    <section class="case-study-block">
+                        <h2>Problem</h2>
+                        <p>Warning workflows were slow and fragmented, with weather signals and district-level risk context spread across disconnected tools.</p>
+                    </section>
+                    <section class="case-study-block">
+                        <h2>Architecture</h2>
+                        <p>Flask service layer with weather fetch, alert generation, and map modules. SQLite caches weather data and alert outputs for fast retrieval.</p>
+                    </section>
+                    <section class="case-study-block">
+                        <h2>Constraints</h2>
+                        <ul>
+                            <li>Bilingual output requirements (English + Urdu)</li>
+                            <li>Local model inference for privacy and reliability</li>
+                            <li>Near-real-time map UX for district operations</li>
+                        </ul>
+                    </section>
+                    <section class="case-study-block">
+                        <h2>Metrics</h2>
+                        <ul>
+                            <li>36 commits across architecture, services, and tests</li>
+                            <li>Bilingual alert workflow delivered end to end</li>
+                            <li>Persistent caching moved to SQLite-backed retrieval</li>
+                        </ul>
+                    </section>
+                    <section class="case-study-block">
+                        <h2>Your Role</h2>
+                        <p>Designed and implemented core services, integrated local LLM alerting, built geospatial dashboard experience, and maintained testable delivery workflow.</p>
+                    </section>
+                </div>
+
+                <div class="case-study-actions">
+                    <a href="https://github.com/imtiazNDMA/EarlyWarningSystem" target="_blank" rel="noopener" class="btn btn-outline">View Repository</a>
+                    <a href="../index.html#contact" class="btn btn-primary">Discuss Similar Build</a>
+                </div>
+            </article>
+        </div>
+    </section>
+</body>
+</html>

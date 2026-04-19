@@ -196,6 +196,12 @@ function initCustomCursor() {
     const dot = document.querySelector('.cursor-dot');
     if (!dot) return;
 
+    const targets = document.querySelectorAll('a, button, .tech-tag, .project-card');
+    targets.forEach(target => {
+        target.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+        target.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+    });
+
     let lastX = 0;
     let lastY = 0;
 
@@ -213,13 +219,6 @@ function initCustomCursor() {
             lastX = posX;
             lastY = posY;
         }
-
-        // Magnetic Effect
-        const targets = document.querySelectorAll('a, button, .tech-tag, .project-card');
-        targets.forEach(target => {
-            target.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
-            target.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
-        });
     });
 }
 
@@ -303,14 +302,24 @@ function init3DTilt() {
 function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
+    const startedAtField = form.querySelector('#form-started-at');
+    if (startedAtField) {
+        startedAtField.value = String(Date.now());
+    }
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = form.querySelector('button');
         if (!btn) return;
 
-        const hCaptchaResponse = hcaptcha?.getResponse();
-        if (!hCaptchaResponse) {
-            btn.innerHTML = '[ERROR] Complete captcha verification <i class="bx bx-x"></i>';
+        const honeypot = form.querySelector('input[name="_gotcha"]');
+        if (honeypot && honeypot.value.trim() !== '') {
+            return;
+        }
+
+        const startedAt = Number(startedAtField?.value || Date.now());
+        if ((Date.now() - startedAt) < 3000) {
+            btn.innerHTML = '[ERROR] Wait 3 seconds, then retry <i class="bx bx-time"></i>';
             btn.style.background = '#f38ba8';
             btn.style.color = '#1e1e2e';
             setTimeout(() => {
@@ -339,7 +348,9 @@ function initContactForm() {
                 btn.style.background = '#a6e3a1';
                 btn.style.color = '#1e1e2e';
                 form.reset();
-                hcaptcha?.reset();
+                if (startedAtField) {
+                    startedAtField.value = String(Date.now());
+                }
             } else {
                 throw new Error('Form submission failed');
             }
