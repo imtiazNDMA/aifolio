@@ -1,6 +1,10 @@
-/* 
+/*
  * UI/UX Optimized Portfolio Interactivity
  */
+
+const prefersReducedMotion = typeof window !== 'undefined'
+    && window.matchMedia
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 document.addEventListener('DOMContentLoaded', () => {
     initHeader();
@@ -12,9 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypedEffect();
     initTimelineAnimation();
     initTerminalTyping();
-    
-    // UI/UX Upgrades (New)
-    initCustomCursor();
     initScrollProgress();
     init3DTilt();
     initMobileMenu();
@@ -70,14 +71,18 @@ function initMobileMenu() {
 function initHeroParticles() {
     const canvas = document.getElementById('hero-canvas');
     if (!canvas) return;
+    if (prefersReducedMotion) return;
     const ctx = canvas.getContext('2d');
     const container = document.getElementById('hero-canvas-container');
 
     let particles = [];
-    const particleCount = 140;
+    const particleCount = 90;
     const connectionDistance = 120;
+    const connectionDistanceSq = connectionDistance * connectionDistance;
     const mouseRadius = 150;
     let mouse = { x: null, y: null };
+    let rafId = null;
+    let isVisible = true;
 
     function resize() {
         if (!container) return;
@@ -139,15 +144,17 @@ function initHeroParticles() {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach((p, i) => {
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
             p.update();
             p.draw();
             for (let j = i + 1; j < particles.length; j++) {
                 const p2 = particles[j];
                 const dx = p.x - p2.x;
                 const dy = p.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < connectionDistance) {
+                const distSq = dx * dx + dy * dy;
+                if (distSq < connectionDistanceSq) {
+                    const dist = Math.sqrt(distSq);
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(p2.x, p2.y);
@@ -156,8 +163,19 @@ function initHeroParticles() {
                     ctx.stroke();
                 }
             }
-        });
-        requestAnimationFrame(animate);
+        }
+        rafId = requestAnimationFrame(animate);
+    }
+
+    function start() {
+        if (rafId === null) animate();
+    }
+
+    function stop() {
+        if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
     }
 
     window.addEventListener('mousemove', (e) => {
@@ -170,13 +188,31 @@ function initHeroParticles() {
         mouse.y = null;
     });
 
-    window.addEventListener('resize', init);
+    window.addEventListener('resize', resize);
+
+    if (container && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                isVisible = entry.isIntersecting;
+                if (isVisible) start(); else stop();
+            });
+        }, { threshold: 0 });
+        io.observe(container);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop(); else if (isVisible) start();
+    });
+
     init();
-    animate();
+    start();
 }
 
 // GSAP Animations (Reveals)
 function initAnimations() {
+    if (typeof gsap === 'undefined') return;
+    if (prefersReducedMotion) return;
+
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.from('.hero-text h1', { duration: 1.2, y: 100, opacity: 0, ease: 'power4.out' });
@@ -202,56 +238,6 @@ function initSkills() {
     // Skills are mostly static tech tags now
 }
 
-// Custom Magnetic Cursor Logic (Binary Stream)
-function initCustomCursor() {
-    const dot = document.querySelector('.cursor-dot');
-    if (!dot) return;
-
-    const targets = document.querySelectorAll('a, button, .tech-tag, .project-card');
-    targets.forEach(target => {
-        target.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
-        target.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
-    });
-
-    let lastX = 0;
-    let lastY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        // Main Dot Position
-        gsap.to(dot, { duration: 0.1, x: posX, y: posY });
-
-        // Spawn Binary Particle only if mouse moved enough (Throttled)
-        const dist = Math.hypot(posX - lastX, posY - lastY);
-        if (dist > 15) {
-            spawnBinary(posX, posY);
-            lastX = posX;
-            lastY = posY;
-        }
-    });
-}
-
-function spawnBinary(x, y) {
-    const particle = document.createElement('div');
-    particle.className = 'binary-particle';
-    particle.innerText = Math.random() > 0.5 ? '1' : '0';
-    particle.style.left = `${x}px`;
-    particle.style.top = `${y}px`;
-    document.body.appendChild(particle);
-
-    gsap.to(particle, {
-        y: (Math.random() - 0.5) * 40,
-        x: (Math.random() - 0.5) * 40,
-        opacity: 0,
-        scale: 0.8,
-        duration: 0.8,
-        ease: 'power2.out',
-        onComplete: () => particle.remove()
-    });
-}
-
 // Scroll Progress Bar Logic
 function initScrollProgress() {
     const bar = document.querySelector('.scroll-progress-bar');
@@ -268,6 +254,7 @@ function initScrollProgress() {
 
 // 3D Tilt Effect Logic
 function init3DTilt() {
+    if (prefersReducedMotion) return;
     const cards = document.querySelectorAll('.domain-card, .project-card');
     
     cards.forEach(card => {
@@ -572,6 +559,11 @@ function initTypedEffect() {
 function initTimelineAnimation() {
     const timelineItems = document.querySelectorAll('.timeline-item');
     if (!timelineItems.length) return;
+
+    if (prefersReducedMotion) {
+        timelineItems.forEach(item => item.classList.add('visible'));
+        return;
+    }
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
